@@ -18,11 +18,17 @@ class Square(Turtle):
 		self.color(r,b,g)
 
 
-
-
-		
 x= Square(6)
 x.random_color()
+
+
+
+class Hexagon(Turtle):
+	"""docstring for Hexagon"""
+	def __init__(self, size):
+		
+		
+		
 
 turtle.mainloop()
 
