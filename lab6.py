@@ -27,10 +27,6 @@ class Hexagon(Turtle):
 	"""docstring for Hexagon"""
 	def __init__(self, size):
 		
-		
-		
-
-turtle.mainloop()
 
 		
 	

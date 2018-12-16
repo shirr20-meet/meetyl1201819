@@ -8,4 +8,4 @@ print(number2)
 numbers=[5,6,7]
 for index in numbers:
 	print(index)
-	pr
+	
