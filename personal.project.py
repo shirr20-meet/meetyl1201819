@@ -21,7 +21,22 @@ class Ball(Turtle):
 		self.screen_height = screen_height
 		self.screen_width = screen_width
 		current_x= self.xcor()
-		new_x = c
-		
+		new_x = current_x + self.dxcor()
+		current_y= self.ycor()
+		new_y= current_y + self.dycor()
+		right_side_ball = new_x + self.r
+		left_side_ball = new_x + self.r
+		top_side_ball = new_y + self.r
+		bottom_side_ball= new_y + self.r
+		self.goto(new_x, new_y)
+		if right_side_ball>screen_width:
+			self.dx = -self.dx
+		if left_side_ball< -screen_width:
+			self.dx = -self.dx
+		if top_side_ball> screen_height:
+			self.dy = -self.dy
+		if bottom_side_ball< -screen_height
+			self.dy= -self.dy
+turtle.mainloop()
 
 		
