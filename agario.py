@@ -3,6 +3,8 @@ import time
 import random
 import math
 from personal_project import Ball
+turtle.register_shape('images.gif')
+turtle.bgpic('images.gif')
 
 turtle.tracer(0)
 turtle.hideturtle()
@@ -12,17 +14,17 @@ SLEEP= 0.0077
 SCREEN_WIDTH =turtle.getcanvas().winfo_width()/2
 SCREEN_HEIGHT = turtle.getcanvas().winfo_height()/2
 
-MY_BALL = Ball(0,0,5,9,30,"pink")
-NUMBER_OF_BALLS = 5
-MINIMUM_BALL_RADIUS = 10
-MAXIMUM_BALL_RADIUS = 65
-MINIMUM_BALL_DX = -5
-MAXIMUM_BALL_DX = 5
-MINIMUM_BALL_DY = -5
-MAXIMUM_BALL_DY = 5
+MY_BALL = Ball(0,0,5,20,35,"pink")
+NUMBER_OF_BALLS = 6
+MINIMUM_BALL_RADIUS = 1
+MAXIMUM_BALL_RADIUS = 70
+MINIMUM_BALL_DX = -3
+MAXIMUM_BALL_DX = 3
+MINIMUM_BALL_DY = -3
+MAXIMUM_BALL_DY = 3
 
 BALLS= []
-
+#make the balls pop randomlly
 for B in range (NUMBER_OF_BALLS):
 	x = random.randint(-SCREEN_WIDTH + MAXIMUM_BALL_RADIUS, SCREEN_WIDTH - MAXIMUM_BALL_RADIUS)
 	y = random.randint(-SCREEN_HEIGHT + MAXIMUM_BALL_RADIUS , SCREEN_HEIGHT - MAXIMUM_BALL_RADIUS)
@@ -47,7 +49,7 @@ def collide(ball_a , ball_b):
 		return True
 	else :
 		return False
-
+#chacks if a random ball collided with another ball
 def  check_all_balls_collision():
 
 	for ball_a in BALLS:
@@ -89,7 +91,7 @@ def  check_all_balls_collision():
 					ball_a.r=r
 					ball_a.color() 
 					ball_a.shapesize(r/10)
-
+#checks if the control ball collides with another ball 
 def check_myball_collision():
 	global MY_BALL
 	for ball in BALLS :
@@ -114,7 +116,7 @@ def check_myball_collision():
 			if r3<r4:
 				return False
 			else:
-				r3+=1
+				r3+=3
 				MY_BALL.r = r3
 				MY_BALL.shapesize(r3/10)
 				ball.goto(x,y)
@@ -133,13 +135,18 @@ turtle.getcanvas().bind("<Motion>", movearound)
 turtle.listen()
 
 
-while RUNNING: 
+while RUNNING== True:
 	SCREEN_WIDTH =turtle.getcanvas().winfo_width()/2
 	SCREEN_HEIGHT = turtle.getcanvas().winfo_height()/2
 	turtle.update()
 	move_all_balls()
 	check_all_balls_collision()
-	RUNNING = check_myball_collision()
+	if check_myball_collision() == False:
+		RUNNING= False
+		turtle.goto(0,0)
+		turtle.write("GAME OVER", font=("Arial", 100, "normal"), align="center")
+		time.sleep(3)
+
 	time.sleep(SLEEP)
 
 
