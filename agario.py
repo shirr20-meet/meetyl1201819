@@ -11,8 +11,8 @@ turtle.hideturtle()
 
 RUNNING =True
 SLEEP= 0.0077
-SCREEN_WIDTH =turtle.getcanvas().winfo_width()/2
-SCREEN_HEIGHT = turtle.getcanvas().winfo_height()/2
+SCREEN_WIDTH =turtle.getcanvas().winfo_width()//2
+SCREEN_HEIGHT = turtle.getcanvas().winfo_height()//2
 
 MY_BALL = Ball(0,0,5,20,35,"pink")
 NUMBER_OF_BALLS = 6
@@ -91,7 +91,7 @@ def  check_all_balls_collision():
 					ball_a.r=r
 					ball_a.color() 
 					ball_a.shapesize(r/10)
-#checks if the control ball collides with another ball 
+#checks if my ball collides with another ball 
 def check_myball_collision():
 	global MY_BALL
 	for ball in BALLS :
@@ -126,6 +126,7 @@ def check_myball_collision():
 				ball.color() 
 				ball.shapesize(r/10)
 	return True
+#make my ball listen to the keyboard and move
 
 def movearound(event):
 	MY_BALL.goto(event.x - SCREEN_WIDTH, SCREEN_HEIGHT- event.y)
@@ -136,8 +137,8 @@ turtle.listen()
 
 
 while RUNNING== True:
-	SCREEN_WIDTH =turtle.getcanvas().winfo_width()/2
-	SCREEN_HEIGHT = turtle.getcanvas().winfo_height()/2
+	SCREEN_WIDTH =turtle.getcanvas().winfo_width()//2
+	SCREEN_HEIGHT = turtle.getcanvas().winfo_height()//2
 	turtle.update()
 	move_all_balls()
 	check_all_balls_collision()
