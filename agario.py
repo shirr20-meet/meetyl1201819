@@ -103,7 +103,8 @@ def check_myball_collision():
 			dx = random.randint(MINIMUM_BALL_DX , MAXIMUM_BALL_DX)
 			if dx ==0 :
 				dx= random.randint(MINIMUM_BALL_DX , MAXIMUM_BALL_DX)
-
+pygame.mixer.init()
+pygame.mixer.music.load("gameover.mp3")
 			dy = random.randint(MINIMUM_BALL_DY ,  MAXIMUM_BALL_DY)
 			if dy ==0:
 				dy = random.randint(MINIMUM_BALL_DY ,  MAXIMUM_BALL_DY)
@@ -146,7 +147,7 @@ while RUNNING== True:
 		RUNNING= False
 		turtle.goto(0,0)
 		turtle.write("GAME OVER", font=("Arial", 100, "normal"), align="center")
-		time.sleep(3)
+		time.sleep(2)
 
 	time.sleep(SLEEP)
 
